@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cce7613c7065cb089f474cc461f105f9",
+
+    "content-hash": "687bc6efb6514c8893a5b79ec7e93dfe",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2959,6 +2960,7 @@
     ],
     "packages-dev": [
         {
+<<<<<<< HEAD
             "name": "barryvdh/laravel-ide-helper",
             "version": "v2.6.5",
             "source": {
@@ -2988,22 +2990,68 @@
                 "phpunit/phpunit": "4.*",
                 "scrutinizer/ocular": "~1.1",
                 "squizlabs/php_codesniffer": "^3"
+=======
+            "name": "barryvdh/laravel-debugbar",
+            "version": "v3.2.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-debugbar.git",
+                "reference": "18208d64897ab732f6c04a19b319fe8f1d57a9c0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/18208d64897ab732f6c04a19b319fe8f1d57a9c0",
+                "reference": "18208d64897ab732f6c04a19b319fe8f1d57a9c0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/routing": "^5.5|^6",
+                "illuminate/session": "^5.5|^6",
+                "illuminate/support": "^5.5|^6",
+                "maximebf/debugbar": "~1.15.0",
+                "php": ">=7.0",
+                "symfony/debug": "^3|^4",
+                "symfony/finder": "^3|^4"
+            },
+            "require-dev": {
+                "laravel/framework": "5.5.x"
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "2.6-dev"
                 },
                 "laravel": {
                     "providers": [
                         "Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider"
                     ]
+=======
+                    "dev-master": "3.2-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Barryvdh\\Debugbar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
+                    }
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "Barryvdh\\LaravelIdeHelper\\": "src"
                 }
+=======
+                    "Barryvdh\\Debugbar\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -3015,6 +3063,7 @@
                     "email": "barryvdh@gmail.com"
                 }
             ],
+<<<<<<< HEAD
             "description": "Laravel IDE Helper, generates correct PHPDocs for all Facade classes, to improve auto-completion.",
             "keywords": [
                 "autocomplete",
@@ -3629,6 +3678,17 @@
                 "events"
             ],
             "time": "2019-11-10T09:48:07+00:00"
+=======
+            "description": "PHP Debugbar integration for Laravel",
+            "keywords": [
+                "debug",
+                "debugbar",
+                "laravel",
+                "profiler",
+                "webprofiler"
+            ],
+            "time": "2019-08-29T07:01:03+00:00"
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
         },
         {
             "name": "doctrine/instantiator",
@@ -4013,6 +4073,7 @@
             "time": "2016-01-20T08:20:44+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "justinrainbow/json-schema",
             "version": "5.2.9",
             "source": {
@@ -4041,11 +4102,47 @@
             "extra": {
                 "branch-alias": {
                     "dev-master": "5.0.x-dev"
+=======
+            "name": "maximebf/debugbar",
+            "version": "v1.15.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maximebf/php-debugbar.git",
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+                "reference": "6c4277f6117e4864966c9cb58fb835cee8c74a1e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6",
+                "psr/log": "^1.0",
+                "symfony/var-dumper": "^2.6|^3|^4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5"
+            },
+            "suggest": {
+                "kriswallsmith/assetic": "The best way to manage assets",
+                "monolog/monolog": "Log using Monolog",
+                "predis/predis": "Redis storage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.15-dev"
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
                 }
             },
             "autoload": {
                 "psr-4": {
+<<<<<<< HEAD
                     "JsonSchema\\": "src/JsonSchema/"
+=======
+                    "DebugBar\\": "src/DebugBar/"
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -4054,6 +4151,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Bruno Prieto Reis",
                     "email": "bruno.p.reis@gmail.com"
                 },
@@ -4077,6 +4175,24 @@
                 "schema"
             ],
             "time": "2019-09-25T14:49:45+00:00"
+=======
+                    "name": "Maxime Bouroumeau-Fuseau",
+                    "email": "maxime.bouroumeau@gmail.com",
+                    "homepage": "http://maximebf.com"
+                },
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Debug bar in the browser for php application",
+            "homepage": "https://github.com/maximebf/php-debugbar",
+            "keywords": [
+                "debug",
+                "debugbar"
+            ],
+            "time": "2019-09-24T14:55:42+00:00"
+>>>>>>> 4b6e28ab65a851c45faae8c15f6ccb73b2a10869
         },
         {
             "name": "mockery/mockery",
