@@ -4,7 +4,7 @@ Ecommerce is an open source ecommerce platform management system using Laravel
 
 
 ## Packages Used
-
+- Laravel-debugbar
 
 ## Installing Instructions
  
