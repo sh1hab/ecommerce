@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->bigInteger('reward_points')->default(0);
             $table->tinyInteger('email_verified')->default(0);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->rememberToken();
