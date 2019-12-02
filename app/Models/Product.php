@@ -21,9 +21,9 @@ class Product extends Model implements Hasmedia
         });
     }
 
-    public function getTitleAttribute()
+    public function getTitleAttribute($value)
     {
-        return ucfirst($this->title);
+        return ucfirst($value);
     }
 
     public function category()

@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->longText('description');
             $table->decimal('price',8,2);
-            $table->decimal('sale_price',8,2);
+            $table->decimal('sale_price',8,2)->default(0);
             $table->tinyInteger('active')->default(1);
             $table->timestamps();
         });
