@@ -11,9 +11,9 @@
      |
      */
 
-    mix.js(['resources/js/app.js',
-            'resources/js/custom.js']
-        , 'public/js')
-       .sass('resources/sass/app.scss', 'public/css/all.css')
-        .styles(['resources/css/custom.css'],'public/css/custom.css')
+    mix.sass('resources/sass/app.scss', 'public/css/all.css')
+        .styles(['resources/css/custom.css'], 'public/css/custom.css')
+        .js(['resources/js/app.js',
+            'resources/js/custom.js'
+        ], 'public/js')
         .version();
