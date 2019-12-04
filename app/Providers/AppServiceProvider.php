@@ -14,9 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $categories = Category::select(['name','slug'])->where('category_id',null)->get();
 
-        // view()->share('categories',$categories);
     }
 
     /**
@@ -26,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Builder::defaultStringLength(191); 
+        Builder::defaultStringLength(191);
+
+        $categories = Category::select(['name','slug'])->where('category_id',null)->get();
+
+         view()->share('categories',$categories);
     }
 }

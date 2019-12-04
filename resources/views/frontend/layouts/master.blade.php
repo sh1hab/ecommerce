@@ -9,7 +9,7 @@
             <!-- Styles -->
             <link href="{{ mix('css/custom.css')}}" rel="stylesheet">
             <link href="{{ mix('css/all.css')}}" rel="stylesheet">
-
+            @yield('css')
         </head>
         <body>
         @include('frontend.partials.header')
@@ -18,6 +18,7 @@
 
         @include('frontend.partials.footer')
 
+        @yield('js')
         <script src="{{ mix('js/app.js')}}"></script>
 
         </body>
