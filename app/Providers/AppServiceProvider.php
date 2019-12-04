@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 use App\Models\Category;
+use App\Models\User;
+use App\Observers\CategoryObserver;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Schema\Builder;
 
@@ -29,5 +31,7 @@ class AppServiceProvider extends ServiceProvider
         $categories = Category::select(['name','slug'])->where('category_id',null)->get();
 
          view()->share('categories',$categories);
+
+         Category::observe(CategoryObserver::class);
     }
 }
