@@ -25,15 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('welcome');
     }
 
     function showHomePage()
     {
-        $products = Product::select(['slug','title','price','sale_price'])
+        $data=[];
+        $products = Product::select(['id','slug','title','price','sale_price'])
                             ->where('active',1)
                             ->paginate(9);
+        $data['products']= $products;
 
-        return view('welcome',compact('products'));
+        return view('frontend.home',$data);
     }
 }

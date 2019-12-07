@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
         $products = \App\Models\Product::select('id')->get();
 
         foreach ( $products as $key => $product ){
-            $product->addMediaFromUrl('http://demo.weblizar.com/explora-premium/wp-content/uploads/sites/81/2016/09/dummy-product_2.png')
+            $product->addMediaFromUrl('https://lorempixel.com/640/480/?75974')
                 ->toMediaCollection('products');
         }
 
