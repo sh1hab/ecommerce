@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    
     function addToCart(Request $request)
     {
         try{
@@ -24,40 +25,45 @@ class CartController extends Controller
         $product = Product::findOrFail( $request->input('product_id') );
 
         $cart = session()->get('cart') ?? [];
-        //dd($cart);
+        
         if( session()->has('cart') )
         {
-            var_dump($product->id);
+            // var_dump($product->id);
             if ( array_key_exists($product->id,$cart['products'] ) )
             {
-                var_dump('here');
+                // var_dump('here');
                 $cart['products'][$product->id]['quantity'] += 1;
+                $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
             }
-            else{
+            else
+            {
                 array_push( $cart['products'], [
                     $product->id => [
                         'title'     =>  $product->title,
                         'quantity'  =>  1,
-                        'price'     =>  $product->sale_price ?? $product->price
+                        'unit_price' =>  $product->sale_price ?? $product->price
                     ]
                     ] );
             }
-        }else{
-//            var_dump('new cart');
+        }
+        else
+        {
             $cart['products'] = [
                 $product->id => [
                     'title'     =>  $product->title,
                     'quantity'  =>  1,
-                    'price'     =>  $product->sale_price ?? $product->price
+                    'unit_price'  =>  $product->sale_price ?? $product->price
                 ]
             ];
         }
 
         session(['cart'=>$cart]);
 
-        dd( session()->get('cart') );
+        session()->flash('message','Product Add Success');
 
-        return redirect()->route('home');
+        // dd( session()->get('cart') );
+
+        return redirect()->route('cart.show');
 
 //        dd(session('cart'));
 
@@ -65,9 +71,39 @@ class CartController extends Controller
 
     function  showCart()
     {
-        session()->flush();
+        // session()->flush();
+        $data = [];
 
-        return redirect()->route('home');
+        $data['cart'] = $cart = session()->get('cart.products') ?? [];
+
+        // dd($cart);
+
+        $data['total'] = array_sum( array_column( $cart , 'total_price' )  );
+
+        // session()->put('product.total',$total);
+
+        return view('frontend.cart.show',$data);
+
+        // return redirect()->route('home');
 
     }
+
+    function deleteFromCart(Request $request)
+    {
+        try{
+            $this->validate($request,
+                [
+                    'product_id' =>'required|numeric'
+                ]);
+        }catch (ValidationException $e){
+            return redirect()->back(404);
+        }
+
+        $product = Product::findOrFail( $request->input('product_id') );
+
+        session()->forget("products".$product['id'] );
+
+    }
+
+   
 }

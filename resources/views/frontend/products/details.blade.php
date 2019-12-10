@@ -22,7 +22,7 @@
 
                         <p class="price-detail-wrap">
                             <span class="price h3 text-warning">
-                                <span class="currency">BDT </span>
+                                {{-- <span class="currency">BDT </span> --}}
                                 <span class="num">
                                     @if($product->sale_price !== null && $product->sale_price > 0)
                                         BDT <strike>{{ $product->price }}</strike> BDT {{ $product->sale_price }}

@@ -18,11 +18,12 @@
 Auth::routes();
 
 Route::group(['namespace'=>'Frontend'],function(){
-//    Route::get('/home', 'HomeController@index')->name('home');
+    //    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/', 'HomeController@showHomePage')->name('home');
     Route::get('/product/{slug}', 'ProductController@showDetails')->name('product.details');
 
     Route::post('cart/add','CartController@addToCart')->name('cart.add');
     Route::get('cart/show','CartController@showCart')->name('cart.show');
+    Route::delete('cart/delete','CartController@deleteFromCart')->name('cart.delete');
 
 });
