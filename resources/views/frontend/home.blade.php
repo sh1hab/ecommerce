@@ -18,10 +18,19 @@
                                     <p class="card-text"><a href="{{ route('product.details',$product->slug)  }}">{{ $product->title }}</a></p>
                                     <div class="d-flex justify-content-be
                                     tween align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">View Details</button>
-                                        </div>
+{{--                                        <div class="btn-group">--}}
+{{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>--}}
+{{--                                            <button type="button" class="btn btn-sm btn-outline-secondary">View Details</button>--}}
+{{--                                        </div>--}}
+                                        <form action="{{ route('cart.add') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <div class="btn-group">
+                                            <button type="submit" class="btn btn-lg btn-outline-secondary">
+                                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                                            </button>
+                                            </div>
+                                        </form>
                                         <strong class="text-muted">BDT {{ $product->sale_price ?? $product->price }}</strong>
                                     </div>
                                 </div>

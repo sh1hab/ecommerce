@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-    
+
     function addToCart(Request $request)
     {
         try{
@@ -25,37 +25,40 @@ class CartController extends Controller
         $product = Product::findOrFail( $request->input('product_id') );
 
         $cart = session()->get('cart') ?? [];
-        
+
         if( session()->has('cart') )
         {
-            // var_dump($product->id);
             if ( array_key_exists($product->id,$cart['products'] ) )
             {
-                // var_dump('here');
                 $cart['products'][$product->id]['quantity'] += 1;
-                $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
+//                $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
             }
             else
             {
-                array_push( $cart['products'], [
-                    $product->id => [
-                        'title'     =>  $product->title,
-                        'quantity'  =>  1,
-                        'unit_price' =>  $product->sale_price ?? $product->price
-                    ]
-                    ] );
-            }
-        }
-        else
-        {
-            $cart['products'] = [
-                $product->id => [
+                $cart['products'][ $product->id ] = [
                     'title'     =>  $product->title,
                     'quantity'  =>  1,
                     'unit_price'  =>  $product->sale_price ?? $product->price
-                ]
-            ];
+//                    'total_price'  => $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price']
+                ];
+            }
+
+//            $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
+
         }
+        else
+        {
+            $cart['products'][ $product->id ] = [
+                'title'     =>  $product->title,
+                'quantity'  =>  1,
+                'unit_price'  =>  $product->sale_price ?? $product->price
+//                'total_price'  => $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price']
+            ];
+
+        }
+
+        $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
+
 
         session(['cart'=>$cart]);
 
@@ -65,26 +68,20 @@ class CartController extends Controller
 
         return redirect()->route('cart.show');
 
-//        dd(session('cart'));
+        // dd(session('cart'));
 
     }
 
     function  showCart()
     {
-        // session()->flush();
+//         session()->flush();
         $data = [];
 
         $data['cart'] = $cart = session()->get('cart.products') ?? [];
 
-        // dd($cart);
-
         $data['total'] = array_sum( array_column( $cart , 'total_price' )  );
 
-        // session()->put('product.total',$total);
-
         return view('frontend.cart.show',$data);
-
-        // return redirect()->route('home');
 
     }
 
@@ -93,17 +90,17 @@ class CartController extends Controller
         try{
             $this->validate($request,
                 [
-                    'product_id' =>'required|numeric'
+                    'id' =>'required|numeric'
                 ]);
         }catch (ValidationException $e){
             return redirect()->back(404);
         }
 
-        $product = Product::findOrFail( $request->input('product_id') );
+        $product = Product::findOrFail( $request->input('id') );
 
         session()->forget("products".$product['id'] );
 
     }
 
-   
+
 }
