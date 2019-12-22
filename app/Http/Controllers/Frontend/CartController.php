@@ -35,23 +35,24 @@ class CartController extends Controller
             }
             else
             {
-                $cart['products'][ $product->id ] = [
-                    'title'     =>  $product->title,
-                    'quantity'  =>  1,
-                    'unit_price'  =>  $product->sale_price ?? $product->price
+                $cart['products'][  $product->id ] = [
+                    'title'         =>  $product->title,
+                    'slug'          =>  $product->slug,
+                    'quantity'      =>  1,
+                    'unit_price'    =>  $product->sale_price ?? $product->price
 //                    'total_price'  => $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price']
                 ];
             }
 
 //            $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
-
         }
         else
         {
-            $cart['products'][ $product->id ] = [
-                'title'     =>  $product->title,
-                'quantity'  =>  1,
-                'unit_price'  =>  $product->sale_price ?? $product->price
+            $cart['products'][  $product->id ] = [
+                'title'         =>  $product->title,
+                'slug'          =>  $product->slug,
+                'quantity'      =>  1,
+                'unit_price'    =>  $product->sale_price ?? $product->price
 //                'total_price'  => $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price']
             ];
 
@@ -59,22 +60,20 @@ class CartController extends Controller
 
         $cart['products'][$product->id]['total_price'] =  $cart['products'][$product->id]['quantity'] *  $cart['products'][$product->id]['unit_price'] ;
 
-
         session(['cart'=>$cart]);
 
         session()->flash('message','Product Add Success');
 
-        // dd( session()->get('cart') );
-
         return redirect()->route('cart.show');
-
-        // dd(session('cart'));
 
     }
 
-    function  showCart()
+    function  showCart($flash=false)
     {
-//         session()->flush();
+        if ( $flash )
+        {
+            \session()->flush();
+        }
         $data = [];
 
         $data['cart'] = $cart = session()->get('cart.products') ?? [];
@@ -82,7 +81,6 @@ class CartController extends Controller
         $data['total'] = array_sum( array_column( $cart , 'total_price' )  );
 
         return view('frontend.cart.show',$data);
-
     }
 
     function deleteFromCart(Request $request)
@@ -99,7 +97,6 @@ class CartController extends Controller
         $product = Product::findOrFail( $request->input('id') );
 
         session()->forget("products".$product['id'] );
-
     }
 
 

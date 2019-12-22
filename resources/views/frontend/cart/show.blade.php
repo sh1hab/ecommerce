@@ -30,7 +30,7 @@
                     @foreach ($cart as $key => $items)
                         <tr>
                                 <td>{{ $i++ }}</td>
-                                <td><a target="_blank" href="">{{ $items['title'] }}</a> </td>
+                                <td><a target="_blank" href=" {{ route('product.details',$items['slug']) }} ">{{ $items['title'] }}</a> </td>
                                 <td>{{ number_format($items['unit_price'],2) }}</td>
                                 <td><input type="number" value="{{ $items['quantity'] }}"></td>
                                 <td>{{ number_format($items['total_price'],2) }}</td>
