@@ -18,8 +18,16 @@
 
         @include('frontend.partials.footer')
 
-        @yield('js')
         <script src="{{ mix('js/app.js')}}"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+        <script type="text/javascript">
+            Vue.component('')
+        </script>
+
+        @yield('js')
+
 
         </body>
     </html>

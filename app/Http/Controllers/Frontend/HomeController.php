@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        //        $this->middleware('auth');
     }
 
     /**
@@ -37,5 +37,10 @@ class HomeController extends Controller
         $data['products']= $products;
 
         return view('frontend.home',$data);
+    }
+
+    function about()
+    {
+        return view('frontend.about');
     }
 }

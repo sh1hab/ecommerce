@@ -17,7 +17,6 @@
                                 <li><a href="#" class="text-white">Create an account</a></li>
                                 <li><a href="#" class="text-white">Login</a></li>
 
-
                             @endguest
 
                             @auth
@@ -25,7 +24,7 @@
                             <li><a href="#" class="text-white">Log out</a></li>
                             @endauth
 
-                                <li><a href="#" class="text-white">Cart</a></li>
+                                <li><a href="/cart/show" class="text-white">Cart</a></li>
                             </ul>
                         </div>
 

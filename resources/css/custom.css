@@ -31,3 +31,9 @@ footer {
 footer p {
     margin-bottom: .25rem;
 }
+
+.hide{
+    display: none !important;
+}
+
+

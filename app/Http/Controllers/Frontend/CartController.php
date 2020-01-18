@@ -88,13 +88,15 @@ class CartController extends Controller
         try{
             $this->validate($request,
                 [
-                    'id' =>'required|numeric'
+                    'id' =>'required | numeric'
                 ]);
         }catch (ValidationException $e){
             return redirect()->back(404);
         }
 
         $product = Product::findOrFail( $request->input('id') );
+
+//        dd($request->input());
 
         session()->forget("products".$product['id'] );
     }

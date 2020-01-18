@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-    <div class="container">
+    <div class="container" id="app">
         <br>
         <p class="text-center">{{ $product->title }}</p>
         <hr>
@@ -40,12 +40,12 @@
 
                         <hr>
 
-                        <form action="{{ route('cart.add') }}" method="post">
+                        <form action="{{ route('cart.add') }}" id="addToCart" method="post" v-on:submit.prevent="addToCart">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-lg btn-outline-secondary">
-                                <i class="fas fa-shopping-cart"></i> Add to Cart
-                            </button>
+                            <input type="submit" class="btn btn-lg btn-outline-secondary" @click.prevent="addToCart" value="Add to cart">
+                                <!-- <i class="fas fa-shopping-cart"></i> Add to Cart -->
+                            
                         </form>
 
                     </article> <!-- card-body.// -->
@@ -55,4 +55,26 @@
 
     </div>
     <!--container.//-->
+
 @endsection
+
+@section("js")
+
+
+    <script type="text/javascript">
+
+        let app = new Vue({
+            el:'app',
+            data:{},
+            methods:{
+                addToCart(){
+                    alert('worked');
+                }
+            },
+            mounted(){
+                // alert('mounted');
+            }
+        });
+    </script>
+
+@stop

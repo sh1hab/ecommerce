@@ -22,8 +22,12 @@ Route::group(['namespace'=>'Frontend'],function(){
     Route::get('/', 'HomeController@showHomePage')->name('home');
     Route::get('/product/{slug}', 'ProductController@showDetails')->name('product.details');
 
-    Route::post('cart/add','CartController@addToCart')->name('cart.add');
-    Route::get('cart/show','CartController@showCart')->name('cart.show');
-    Route::delete('cart/delete/{id}','CartController@deleteFromCart')->name('cart.delete');
+    Route::post('/cart/add','CartController@addToCart')->name('cart.add');
+
+    Route::delete('/delete','CartController@deleteFromCart')->name('cart.delete');
+
+    Route::get('/cart/show','CartController@showCart')->name('cart.show');
+
+    Route::get('/about','HomeController@about')->name('about');
 
 });
