@@ -28,15 +28,15 @@ class AppServiceProvider extends ServiceProvider
     {
         Builder::defaultStringLength(191);
         
-//         try{
-//             $categories = Category::select(['name','slug'])->where('category_id',null)->get();
+        try{
+            $categories = Category::select(['name','slug'])->where('category_id',null)->get();
 
-//             view()->share('categories',$categories);
+            view()->share('categories',$categories);
 
-//             Category::observe(CategoryObserver::class);
-//         }catch(Exception $e){
+            Category::observe(CategoryObserver::class);
+        }catch(Exception $e){
             
-//         }
+        }
 
         
     }
