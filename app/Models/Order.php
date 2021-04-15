@@ -15,7 +15,7 @@ class Order extends Model
 
     public function processor()
     {
-        return $this->hasOne(User::class,'processed_by');
+        return $this->hasOne(User::class, 'processed_by');
     }
 
     public function products()

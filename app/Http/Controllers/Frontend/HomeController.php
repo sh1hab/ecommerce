@@ -12,13 +12,13 @@ class HomeController extends Controller
 
     public function __invoke(): Renderable
     {
-        $data=[];
-        $products = Product::select(['id','slug','title','price','sale_price'])
-            ->where('active',1)
+        $data = [];
+        $products = Product::select(['id', 'slug', 'title', 'price', 'sale_price'])
+            ->where('active', 1)
             ->paginate($this->paginate);
         $data['products'] = $products;
 
-        return view('frontend.home',$data);
+        return view('frontend.home', $data);
     }
 
 //    function showHomePage()

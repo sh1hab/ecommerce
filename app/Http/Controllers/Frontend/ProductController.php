@@ -10,16 +10,15 @@ class ProductController extends Controller
 {
     function showDetails(Request $request, $slug)
     {
-        $product = Product::where('slug',$slug)
-                ->where('active',1)
-                ->first();
+        $product = Product::where('slug', $slug)
+            ->where('active', 1)
+            ->first();
 
-        if( is_null($product) )
-        {
+        if (is_null($product)) {
             return redirect()->route('');
         }
         $data['product'] = $product;
 
-        return view('frontend.products.details',$data);
+        return view('frontend.products.details', $data);
     }
 }

@@ -3,26 +3,26 @@
 @section('content')
     <main role="main">
         <div class="container">
-                <div id="about">
+            <div id="about">
 
-                    <tabs>
-                        <tab name="about us" :selected="true">
-                            <h2>ABOUT US</h2>
-                        </tab>
+                <tabs>
+                    <tab name="about us" :selected="true">
+                        <h2>ABOUT US</h2>
+                    </tab>
 
-                        <tab name="about our culture" >
-                            CONTACT US
-                        </tab>
+                    <tab name="about our culture">
+                        CONTACT US
+                    </tab>
 
-                        <tab name="us" >
-                            US
-                        </tab>
-                        
-                    </tabs>
+                    <tab name="us">
+                        US
+                    </tab>
+
+                </tabs>
 
             </div>
         </div>
-       
+
     </main>
 @stop
 
@@ -30,24 +30,24 @@
 
     <script type="text/javascript">
 
-        Vue.component('tab',{
+        Vue.component('tab', {
             template:
-            `
+                `
             <div class="tab ">
                 <slot></slot>
             </div>
             `,
-            props:{  
-                name: { required:true },
+            props: {
+                name: {required: true},
 
             }
 
         });
 
-        Vue.component('tabs',{
+        Vue.component('tabs', {
 
             template:
-            `
+                `
             <div>
                 
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">   
@@ -68,30 +68,25 @@
             </div>  
             `,
 
-            data(){
+            data() {
                 return {
                     tabs: []
                 }
             },
 
-            created(){
+            created() {
                 this.tabs = this.$children;
                 // console.log( this.$children );
             }
 
-
         });
 
-        
+
         let about = new Vue({
             "el": '#about',
-            "data": {
-
-            },
-            "methods": {
-                
-            },
-            created(){
+            "data": {},
+            "methods": {},
+            created() {
                 // console.log( this.$children );
             }
         });
