@@ -8,9 +8,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    function showDetails($slug)
+    function showDetails(Request $request, $slug)
     {
-        $data=[];
         $product = Product::where('slug',$slug)
                 ->where('active',1)
                 ->first();

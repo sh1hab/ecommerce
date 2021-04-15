@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
@@ -21,12 +22,12 @@ class Product extends Model implements Hasmedia
         });
     }
 
-    public function getTitleAttribute($value)
+    public function getTitleAttribute($value): string
     {
         return ucfirst($value);
     }
 
-    public function category()
+    public function category(): HasOne
     {
         return $this->hasOne(Category::class);
     }

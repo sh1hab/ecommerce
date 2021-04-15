@@ -4,43 +4,36 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //        $this->middleware('auth');
-    }
+    protected $paginate = 10;
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('welcome');
-    }
-
-    function showHomePage()
+    public function __invoke(): Renderable
     {
         $data=[];
         $products = Product::select(['id','slug','title','price','sale_price'])
-                            ->where('active',1)
-                            ->paginate(9);
-        $data['products']= $products;
+            ->where('active',1)
+            ->paginate($this->paginate);
+        $data['products'] = $products;
 
         return view('frontend.home',$data);
     }
 
-    function about()
-    {
-        return view('frontend.about');
-    }
+//    function showHomePage()
+//    {
+//        $data=[];
+//        $products = Product::select(['id','slug','title','price','sale_price'])
+//                            ->where('active',1)
+//                            ->paginate(9);
+//        $data['products'] = $products;
+//
+//        return view('frontend.home',$data);
+//    }
+//
+//    function about()
+//    {
+//        return view('frontend.about');
+//    }
 }

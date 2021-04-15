@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Category extends Model
@@ -18,12 +20,12 @@ class Category extends Model
 //        });
     }
 
-    function parent_category()
+    function parent_category(): BelongsTo
     {
         return $this->belongsTo(__CLASS__);
     }
 
-    function child_category()
+    function child_category(): HasMany
     {
         return $this->hasMany(__CLASS__);
     }

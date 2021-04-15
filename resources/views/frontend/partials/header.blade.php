@@ -4,7 +4,7 @@
                     <div class="row">
                         <div class="col-sm-8 col-md-7 py-4">
                                 <ul class="list-unstyled">
-                                    @foreach ($categories as $category)
+                                    @foreach ($errors as $category)
                                         <li><a href="{{ $category->slug }}" class="text-white">{{ $category->name }}</a></li>
                                     @endforeach
                                 </ul>

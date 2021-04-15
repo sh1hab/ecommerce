@@ -1,13 +1,14 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
-use App\Model;
+use App\Models\Category;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 
-$factory->define(\App\Models\Category::class, function (Faker $faker) {
-    return array(
+$factory->define(Category::class, function (Faker $faker) {
+    return [
         'name' => $faker->colorName,
         'banner' => $faker->imageUrl()
-    );
+    ];
 });

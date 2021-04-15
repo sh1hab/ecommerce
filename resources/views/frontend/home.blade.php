@@ -36,8 +36,8 @@
 
     <script type="text/javascript">
 
-        Vue.component('product',{
-            props:[ 'id','title','image','slug','price' ],
+        Vue.component('product', {
+            props: ['id', 'title', 'image', 'slug', 'price'],
 
             template:
                 `
@@ -69,23 +69,21 @@
 
         let cart = new Vue({
             "el": '#products',
-            "data": {
-
-            },
+            "data": {},
             "methods": {
                 "fetchProductImage": function () {
                     // axios.get()
                 },
-                "deleteSession":function () {
+                "deleteSession": function () {
 
                 }
             },
-            "mounted"(){
+            "mounted"() {
                 this.isLoading = true;
             },
-            "computed":{
+            "computed": {
 
-                showBdt(){
+                showBdt() {
                     // return this.
                 }
 
