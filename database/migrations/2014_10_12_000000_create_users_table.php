@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone_number',32)->unique();
+            $table->string('phone_number',32)->unique()->nullable();
             $table->string('password',128);
             $table->bigInteger('reward_points')->default(0);
             $table->tinyInteger('email_verified')->default(0);

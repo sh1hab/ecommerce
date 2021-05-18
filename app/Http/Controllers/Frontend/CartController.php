@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Repository\ProductRepositoryInterface;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -14,6 +14,12 @@ use function session;
 
 class CartController extends Controller
 {
+    private $productRepository;
+
+    public function __construct(ProductRepositoryInterface $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
 
     function addToCart(Request $request): RedirectResponse
     {
@@ -28,7 +34,7 @@ class CartController extends Controller
             return redirect()->back(400);
         }
 
-        $product = Product::findOrFail($request->input('product_id'));
+        $product = $this->productRepository->findOrFail($request->input('product_id'));
 
         $cart = session()->get('cart') ?? [];
 
@@ -93,7 +99,7 @@ class CartController extends Controller
             return redirect()->back(400);
         }
 
-        $product = Product::findOrFail($request->input('id'));
+        $product = $this->productRepository->findOrFail($request->input('id'));
 
         session()->forget("products" . $product['id']);
     }

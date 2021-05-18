@@ -15,13 +15,14 @@
 //    return view('welcome');
 //});
 
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
 Route::group(['namespace' => 'Frontend'], function () {
-    //    Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/', 'HomeController')->name('home');
+        Route::get('/', 'HomeController')->name('home');
+//    Route::get('/', [HomeController::class])->name('home');
     Route::get('/product/{slug}', 'ProductController@showDetails')->name('product.details');
 
     Route::post('/cart/add', 'CartController@addToCart')->name('cart.add');
